@@ -169,22 +169,13 @@
 <br />
 
 <div align="center">
-  <table style="border: none;">
-    <tr>
-      <td style="border: none;">
-        <img src="https://github-readme-stats.vercel.app/api?username=ceskasc&show_icons=true&theme=omni&bg_color=0a0a0a&title_color=d4a853&text_color=ffffff&icon_color=d4a853&border_color=d4a853" alt="Sadık Can's Github Stats" />
-      </td>
-      <td style="border: none;">
-        <img src="https://github-readme-streak-stats.herokuapp.com/?user=ceskasc&theme=omni&background=0a0a0a&ring=d4a853&fire=d4a853&currStreakLabel=d4a853&border=d4a853&stroke=d4a853&dates=ffffff&currStreakNum=ffffff&sideNums=ffffff&sideLabels=ffffff" alt="Sadık Can's Streak" />
-      </td>
-    </tr>
-  </table>
+  <img src="https://github-profile-trophy.vercel.app/?username=ceskasc&theme=discord&no-frame=true&column=7&margin-w=15&margin-h=15" alt="Trophies" />
 </div>
 
 <br />
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ceskasc&layout=compact&theme=omni&bg_color=0a0a0a&title_color=d4a853&text_color=ffffff&icon_color=d4a853&border_color=d4a853&hide_border=false" alt="Top Languages" width="600" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=ceskasc&theme=omni&background=0a0a0a&ring=d4a853&fire=d4a853&currStreakLabel=d4a853&border=d4a853&stroke=d4a853&dates=ffffff&currStreakNum=ffffff&sideNums=ffffff&sideLabels=ffffff" alt="Sadık Can's Streak" />
 </div>
 
 <br />
