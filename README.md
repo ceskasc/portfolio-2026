@@ -196,14 +196,6 @@
   </a>
 </div>
 
-<br />
-
-
-
-<br />
-<br />
-<br />
-
 <!-- FOOTER -->
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=d4a853&height=100&section=footer" width="100%" />
@@ -216,10 +208,3 @@
     <small>Last Updated: 2026</small>
   </p>
 </div>
-
-<!-- BOTTOM SPACER TO ENSURE SCROLL -->
-<br />
-<br />
-<br />
-<br />
-<br />
