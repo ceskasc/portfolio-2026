@@ -163,19 +163,6 @@
 <br />
 <br />
 
-<!-- GITHUB STATS SECTION -->
-<h2 align="center">📈 GitHub Stats</h2>
-
-<br />
-
-<div align="center">
-  <a href="https://github.com/ceskasc">
-    <img src="https://github-readme-stats.vercel.app/api?username=ceskasc&theme=dark&show_icons=true&bg_color=0a0a0a&title_color=d4a853&text_color=ffffff&icon_color=d4a853&hide_border=true" alt="GitHub Stats" />
-  </a>
-</div>
-
-<br />
-
 <div align="center">
   <a href="https://github.com/ceskasc">
     <img src="https://github-readme-streak-stats.herokuapp.com/?user=ceskasc&theme=dark&background=0a0a0a&ring=d4a853&fire=d4a853&currStreakLabel=d4a853&hide_border=true" alt="Streak Stats" />
