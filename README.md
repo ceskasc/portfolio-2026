@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop" alt="Portfolio Banner" width="100%" />
+  <img src="assets/portfolio-banner.png" alt="Portfolio Banner" width="100%" />
 
   <br />
   <br />
@@ -129,8 +129,8 @@ To run this project locally:
   <a href="mailto:contact@sadikcanceska.com">
     <img src="https://img.shields.io/badge/Email-Contact_Me-d4a853?style=for-the-badge&logo=gmail&logoColor=0a0a0a" alt="Email" />
   </a>
-  <a href="https://linkedin.com">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  <a href="https://discord.gg/zq8mQTeBqA">
+    <img src="https://img.shields.io/badge/Discord-Join_Server-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" />
   </a>
   <a href="https://github.com">
     <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
