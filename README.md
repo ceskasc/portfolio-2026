@@ -172,10 +172,10 @@
   <table style="border: none;">
     <tr>
       <td style="border: none;">
-        <img src="https://github-readme-stats.vercel.app/api?username=ceskasc&amp;show_icons=true&amp;theme=omni&amp;bg_color=0a0a0a&amp;title_color=d4a853&amp;text_color=ffffff&amp;icon_color=d4a853&amp;border_color=d4a853&amp;hide_border=false" alt="Sadık Can's Github Stats" />
+        <img src="https://github-readme-stats.vercel.app/api?username=ceskasc&show_icons=true&theme=omni&bg_color=0a0a0a&title_color=d4a853&text_color=ffffff&icon_color=d4a853&border_color=d4a853" alt="Sadık Can's Github Stats" />
       </td>
       <td style="border: none;">
-        <img src="https://github-readme-streak-stats.herokuapp.com/?user=ceskasc&amp;theme=omni&amp;background=0a0a0a&amp;ring=d4a853&amp;fire=d4a853&amp;currStreakLabel=d4a853&amp;border=d4a853&amp;stroke=d4a853&amp;dates=ffffff&amp;currStreakNum=ffffff&amp;sideNums=ffffff&amp;sideLabels=ffffff&amp;hide_border=false" alt="Sadık Can's Streak" />
+        <img src="https://github-readme-streak-stats.herokuapp.com/?user=ceskasc&theme=omni&background=0a0a0a&ring=d4a853&fire=d4a853&currStreakLabel=d4a853&border=d4a853&stroke=d4a853&dates=ffffff&currStreakNum=ffffff&sideNums=ffffff&sideLabels=ffffff" alt="Sadık Can's Streak" />
       </td>
     </tr>
   </table>
@@ -184,7 +184,7 @@
 <br />
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ceskasc&amp;layout=compact&amp;theme=omni&amp;bg_color=0a0a0a&amp;title_color=d4a853&amp;text_color=ffffff&amp;icon_color=d4a853&amp;border_color=d4a853&amp;hide_border=false" alt="Top Languages" width="600" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ceskasc&layout=compact&theme=omni&bg_color=0a0a0a&title_color=d4a853&text_color=ffffff&icon_color=d4a853&border_color=d4a853&hide_border=false" alt="Top Languages" width="600" />
 </div>
 
 <br />
@@ -193,7 +193,7 @@
 <!-- CONTRIBUTION GRAPH -->
 <h2 align="center">🐍 Contribution Graph</h2>
 <div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ceskasc&amp;theme=react-dark&amp;bg_color=0a0a0a&amp;color=d4a853&amp;line=d4a853&amp;point=ffffff&amp;area=true&amp;hide_border=false&amp;area_color=d4a853" alt="Contribution Graph" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ceskasc&theme=react-dark&bg_color=0a0a0a&color=d4a853&line=d4a853&point=ffffff&area=true&hide_border=false&area_color=d4a853" alt="Contribution Graph" />
 </div>
 
 <br />
