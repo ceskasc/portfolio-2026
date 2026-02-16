@@ -1,0 +1,96 @@
+/* Print Stylesheet — Reshad Aslanov Portfolio */
+@media print {
+
+    *,
+    *::before,
+    *::after {
+        background: white !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    /* Hide non-essential elements */
+    #loader,
+    #cursor,
+    #cursor-dot,
+    #cursor-trail,
+    #cursor-label,
+    #scroll-progress,
+    #back-to-top-fab,
+    #cookie-consent,
+    #page-transition,
+    #particles,
+    #navbar,
+    #mobile-menu,
+    .marquee-track,
+    #freelance-badge,
+    .filter-btn,
+    .testimonial-dot,
+    video,
+    canvas {
+        display: none !important;
+    }
+
+    /* Ensure content is visible */
+    section {
+        page-break-inside: avoid;
+        padding: 1rem 0 !important;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666 !important;
+    }
+
+    a[href^="#"]::after {
+        content: "";
+    }
+
+    img {
+        max-width: 100% !important;
+        opacity: 1 !important;
+    }
+
+    .work-card {
+        page-break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    /* Show grid properly */
+    .grid {
+        display: block !important;
+    }
+
+    .grid>* {
+        margin-bottom: 1rem;
+    }
+
+    /* Force text visibility */
+    .text-stroke {
+        -webkit-text-stroke: 0 !important;
+        color: #000 !important;
+    }
+
+    /* Footer */
+    footer {
+        border-top: 1px solid #ccc !important;
+        margin-top: 2rem;
+        padding-top: 1rem;
+    }
+}

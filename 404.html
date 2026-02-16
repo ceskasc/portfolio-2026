@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Found | Reshad Aslanov</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #f5f0e8;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .error-code {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(8rem, 20vw, 16rem);
+            line-height: 0.9;
+            background: linear-gradient(135deg, #d4a853, #b8860b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.15;
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: -2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: rgba(245, 240, 232, 0.4);
+            font-size: 0.95rem;
+            font-weight: 300;
+            max-width: 24rem;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: 1px solid rgba(212, 168, 83, 0.3);
+            padding: 1rem 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #d4a853;
+            text-decoration: none;
+            transition: all 0.5s;
+        }
+
+        a:hover {
+            background: #d4a853;
+            color: #0a0a0a;
+        }
+
+        .glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: rgba(212, 168, 83, 0.04);
+            border-radius: 50%;
+            filter: blur(120px);
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glow"></div>
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1>Page Not Found</h1>
+        <p>The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+        <a href="/">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Home
+        </a>
+    </div>
+</body>
+
+</html>

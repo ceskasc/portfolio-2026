@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://reshadaslanov.com/sitemap.xml
+
+# Disallow crawling of non-content files
+Disallow: /sw.js

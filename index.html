@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reshad Aslanov — Graphic Designer | Baku</title>
+    <meta name="description"
+        content="Portfolio of Reshad Aslanov, a graphic designer based in Baku, Azerbaijan. Branding, print, digital design and creative direction." />
+    <meta property="og:title" content="Reshad Aslanov — Graphic Designer" />
+    <meta property="og:description"
+        content="Crafting visual identities that resonate. Portfolio of a graphic designer based in Baku, Azerbaijan." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1200&h=630&fit=crop" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Reshad Aslanov — Graphic Designer" />
+    <meta name="twitter:description"
+        content="Crafting visual identities that resonate. Branding, print, digital design." />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a0a'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='20' fill='%23d4a853'%3ER%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { 900: '#0a0a0a', 800: '#111111', 700: '#1a1a1a', 600: '#242424' },
+                        gold: { 400: '#d4a853', 500: '#c9952e', 600: '#b8860b' },
+                        cream: { 100: '#f5f0e8', 200: '#e8e0d0' }
+                    },
+                    fontFamily: {
+                        display: ['Syne', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="print.css" media="print" />
+</head>
+
+<body class="bg-dark-900 text-cream-100 font-body overflow-x-hidden">
+
+    <!-- Page Transition Overlay -->
+    <div id="page-transition" class="fixed inset-0 z-[200] bg-dark-900 pointer-events-none"
+        style="transform: translateY(-100%);"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"
+        class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-gold-400 to-gold-600 z-[101] transition-none"
+        style="width: 0%;"></div>
+
+    <!-- Loader Removed -->
+
+    <!-- Cursor Trail Canvas -->
+    <canvas id="cursor-trail" class="hidden lg:block fixed inset-0 pointer-events-none z-[89]"></canvas>
+
+    <!-- Custom Cursor -->
+    <div id="cursor"
+        class="hidden lg:block fixed w-5 h-5 border border-gold-400/50 rounded-full pointer-events-none z-[90] transition-transform duration-200 ease-out mix-blend-difference">
+    </div>
+    <div id="cursor-dot" class="hidden lg:block fixed w-1.5 h-1.5 bg-gold-400 rounded-full pointer-events-none z-[90]">
+    </div>
+    <!-- Cursor View Label -->
+    <div id="cursor-label"
+        class="hidden lg:flex fixed pointer-events-none z-[91] items-center justify-center w-20 h-20 rounded-full bg-gold-400 text-dark-900 text-[10px] font-display font-bold tracking-[0.2em] uppercase opacity-0 transition-opacity duration-300"
+        style="transform: translate(-50%, -50%);">
+        VIEW
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-6 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#hero" class="font-display font-bold text-xl tracking-tight group">
+                R<span class="inline-block transition-all duration-300 group-hover:text-gold-400">.</span>A
+            </a>
+            <!-- Badge Removed from here -->
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#about"
+                    class="nav-link text-sm tracking-[0.15em] uppercase text-cream-100/60 hover:text-gold-400 transition-colors duration-300">About</a>
+                <a href="#works"
+                    class="nav-link text-sm tracking-[0.15em] uppercase text-cream-100/60 hover:text-gold-400 transition-colors duration-300">Works</a>
+                <a href="#services"
+                    class="nav-link text-sm tracking-[0.15em] uppercase text-cream-100/60 hover:text-gold-400 transition-colors duration-300">Services</a>
+                <a href="#contact"
+                    class="nav-link text-sm tracking-[0.15em] uppercase text-cream-100/60 hover:text-gold-400 transition-colors duration-300">Contact</a>
+
+                <!-- Minimal Badge -->
+                <div class="hidden md:flex items-center gap-2 -ml-2">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span class="text-[10px] tracking-[0.2em] uppercase text-cream-100/40">Available</span>
+                </div>
+                <button id="theme-toggle"
+                    class="w-9 h-9 rounded-full border border-cream-100/10 flex items-center justify-center text-cream-100/40 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300"
+                    aria-label="Toggle theme">
+                    <svg id="icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>
+                    <svg id="icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="1.5"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                    </svg>
+                </button>
+            </div>
+            <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 z-50">
+                <span class="menu-line w-7 h-[2px] bg-cream-100 transition-all duration-300 origin-center"></span>
+                <span class="menu-line w-5 h-[2px] bg-cream-100 transition-all duration-300 ml-auto"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-40 bg-dark-900/98 backdrop-blur-xl flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="text-center space-y-8">
+            <a href="#about"
+                class="mobile-link block font-display text-4xl font-bold tracking-tight hover:text-gold-400 transition-colors">About</a>
+            <a href="#works"
+                class="mobile-link block font-display text-4xl font-bold tracking-tight hover:text-gold-400 transition-colors">Works</a>
+            <a href="#services"
+                class="mobile-link block font-display text-4xl font-bold tracking-tight hover:text-gold-400 transition-colors">Services</a>
+            <a href="#contact"
+                class="mobile-link block font-display text-4xl font-bold tracking-tight hover:text-gold-400 transition-colors">Contact</a>
+
+            <!-- Minimal Badge Mobile -->
+            <div class="flex items-center justify-center gap-3 mt-8 opacity-60">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span class="text-xs tracking-[0.2em] uppercase text-cream-100/60">Available for Freelance</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        <!-- Particle Canvas -->
+        <canvas id="particles" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute top-1/4 -left-20 w-96 h-96 bg-gold-400/10 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-gold-500/8 rounded-full blur-[100px]"></div>
+        </div>
+        <div class="relative z-10 text-center max-w-5xl mx-auto">
+            <div class="overflow-hidden mb-4">
+                <p
+                    class="reveal-up text-sm md:text-base tracking-[0.4em] uppercase text-gold-400/80 font-body font-light">
+                    Graphic Designer — Baku, Azerbaijan</p>
+            </div>
+            <div class="overflow-hidden">
+                <h1 class="reveal-up font-display font-800 text-[clamp(3rem,10vw,9rem)] leading-[0.9] tracking-tight">
+                    RESHAD<br /><span class="text-stroke">ASLANOV</span>
+                </h1>
+            </div>
+            <div class="overflow-hidden mt-8">
+                <p class="reveal-up text-cream-100/50 text-lg md:text-xl font-light max-w-xl mx-auto">Crafting visual
+                    identities that resonate. Turning ideas into design experiences.</p>
+            </div>
+            <div class="overflow-hidden mt-12">
+                <div class="reveal-up flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#works"
+                        class="inline-flex items-center gap-3 border border-gold-400/30 px-8 py-4 text-sm tracking-[0.2em] uppercase text-gold-400 hover:bg-gold-400 hover:text-dark-900 transition-all duration-500 group">
+                        View Works
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="#" id="download-cv"
+                        class="inline-flex items-center gap-3 border border-cream-100/10 px-8 py-4 text-sm tracking-[0.2em] uppercase text-cream-100/60 hover:border-gold-400/30 hover:text-gold-400 transition-all duration-500 group">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 5v14M5 12l7 7 7-7" />
+                        </svg>
+                        Download CV
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream-100/30">
+            <span class="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+            <div class="w-[1px] h-10 bg-gradient-to-b from-cream-100/30 to-transparent scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 lg:py-40 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-5 reveal-section">
+                    <div class="relative aspect-[3/4] bg-dark-700 rounded-sm overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&crop=face"
+                            alt="Reshad Aslanov"
+                            class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" />
+                        <div class="absolute inset-0 bg-gradient-to-br from-gold-400/20 via-dark-700/40 to-dark-800/60">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-dark-900/80 to-transparent">
+                        </div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <div class="w-8 h-[2px] bg-gold-400 mb-3"></div>
+                            <p class="text-sm text-cream-100/50 font-light">Based in Baku</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 reveal-section">
+                    <div class="mb-6">
+                        <span class="text-xs tracking-[0.3em] uppercase text-gold-400/60">01 — About</span>
+                    </div>
+                    <h2
+                        class="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight mb-8 leading-[1.1]">
+                        Designing with<br /><span class="text-gold-400">purpose</span> & passion
+                    </h2>
+                    <div class="space-y-5 text-cream-100/60 text-base lg:text-lg font-light leading-relaxed">
+                        <p>I'm Reshad Aslanov, a graphic designer based in Baku, Azerbaijan. With a keen eye for detail
+                            and a deep passion for visual storytelling, I create designs that connect brands with their
+                            audiences.</p>
+                        <p>My approach blends minimalism with bold creative choices — every element serves a purpose,
+                            every composition tells a story. From brand identities to editorial layouts, I bring ideas
+                            to life through thoughtful design.</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-cream-100/10">
+                        <div class="counter-item">
+                            <span class="font-display text-3xl md:text-4xl font-bold text-gold-400 counter"
+                                data-target="50">0</span><span class="font-display text-3xl text-gold-400">+</span>
+                            <p class="text-xs tracking-[0.15em] uppercase text-cream-100/40 mt-2">Projects</p>
+                        </div>
+                        <div class="counter-item">
+                            <span class="font-display text-3xl md:text-4xl font-bold text-gold-400 counter"
+                                data-target="30">0</span><span class="font-display text-3xl text-gold-400">+</span>
+                            <p class="text-xs tracking-[0.15em] uppercase text-cream-100/40 mt-2">Clients</p>
+                        </div>
+                        <div class="counter-item">
+                            <span class="font-display text-3xl md:text-4xl font-bold text-gold-400 counter"
+                                data-target="5">0</span><span class="font-display text-3xl text-gold-400">+</span>
+                            <p class="text-xs tracking-[0.15em] uppercase text-cream-100/40 mt-2">Years Exp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="py-32 lg:py-40 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-end justify-between mb-16 reveal-section">
+                <div>
+                    <span class="text-xs tracking-[0.3em] uppercase text-gold-400/60">02 — Selected Works</span>
+                    <h2 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight mt-4">
+                        Featured<br />Projects</h2>
+                </div>
+                <div class="hidden md:block w-16 h-[2px] bg-gold-400/30"></div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex flex-wrap gap-3 mb-10 reveal-section">
+                <button
+                    class="filter-btn active text-[10px] tracking-[0.2em] uppercase px-5 py-2.5 border border-gold-400/30 text-gold-400 bg-gold-400/10 transition-all duration-300 hover:bg-gold-400 hover:text-dark-900"
+                    data-filter="all">All</button>
+                <button
+                    class="filter-btn text-[10px] tracking-[0.2em] uppercase px-5 py-2.5 border border-cream-100/10 text-cream-100/40 transition-all duration-300 hover:border-gold-400/30 hover:text-gold-400"
+                    data-filter="branding">Branding</button>
+                <button
+                    class="filter-btn text-[10px] tracking-[0.2em] uppercase px-5 py-2.5 border border-cream-100/10 text-cream-100/40 transition-all duration-300 hover:border-gold-400/30 hover:text-gold-400"
+                    data-filter="poster">Poster</button>
+                <button
+                    class="filter-btn text-[10px] tracking-[0.2em] uppercase px-5 py-2.5 border border-cream-100/10 text-cream-100/40 transition-all duration-300 hover:border-gold-400/30 hover:text-gold-400"
+                    data-filter="digital">Digital</button>
+                <button
+                    class="filter-btn text-[10px] tracking-[0.2em] uppercase px-5 py-2.5 border border-cream-100/10 text-cream-100/40 transition-all duration-300 hover:border-gold-400/30 hover:text-gold-400"
+                    data-filter="social">Social</button>
+                <button
+                    class="filter-btn text-[10px] tracking-[0.2em] uppercase px-5 py-2.5 border border-cream-100/10 text-cream-100/40 transition-all duration-300 hover:border-gold-400/30 hover:text-gold-400"
+                    data-filter="editorial">Editorial</button>
+                <button
+                    class="filter-btn text-[10px] tracking-[0.2em] uppercase px-5 py-2.5 border border-cream-100/10 text-cream-100/40 transition-all duration-300 hover:border-gold-400/30 hover:text-gold-400"
+                    data-filter="packaging">Packaging</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 lg:gap-8" id="works-grid">
+                <!-- Project 1 -->
+                <div class="work-card group reveal-section relative aspect-[4/3] bg-dark-700 rounded-sm overflow-hidden cursor-pointer"
+                    data-category="branding">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=600&fit=crop"
+                        alt="Noir Essence Branding"
+                        class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-700" />
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-600/30 via-orange-800/20 to-dark-900">
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center"><span
+                            class="font-display text-7xl font-bold text-white/5 group-hover:text-white/10 transition-all duration-700 group-hover:scale-110">01</span>
+                    </div>
+                    <div class="absolute inset-0 bg-dark-900/0 group-hover:bg-dark-900/50 transition-all duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="text-[10px] tracking-[0.3em] uppercase text-gold-400">Branding</span>
+                        <h3 class="font-display font-bold text-2xl mt-2">Noir Essence</h3>
+                        <p
+                            class="text-sm text-cream-100/50 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                            Luxury perfume brand identity & packaging design</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="work-card group reveal-section relative aspect-[4/3] bg-dark-700 rounded-sm overflow-hidden cursor-pointer md:mt-16"
+                    data-category="poster">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop"
+                        alt="Metamorphosis Poster"
+                        class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-700" />
+                    <div class="absolute inset-0 bg-gradient-to-br from-violet-900/40 via-purple-800/20 to-dark-900">
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center"><span
+                            class="font-display text-7xl font-bold text-white/5 group-hover:text-white/10 transition-all duration-700 group-hover:scale-110">02</span>
+                    </div>
+                    <div class="absolute inset-0 bg-dark-900/0 group-hover:bg-dark-900/50 transition-all duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="text-[10px] tracking-[0.3em] uppercase text-gold-400">Poster Design</span>
+                        <h3 class="font-display font-bold text-2xl mt-2">Metamorphosis</h3>
+                        <p
+                            class="text-sm text-cream-100/50 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                            Art exhibition campaign & visual system</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="work-card group reveal-section relative aspect-[4/3] bg-dark-700 rounded-sm overflow-hidden cursor-pointer"
+                    data-category="digital">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop"
+                        alt="EcoVista App"
+                        class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-700" />
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/30 via-teal-800/20 to-dark-900">
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center"><span
+                            class="font-display text-7xl font-bold text-white/5 group-hover:text-white/10 transition-all duration-700 group-hover:scale-110">03</span>
+                    </div>
+                    <div class="absolute inset-0 bg-dark-900/0 group-hover:bg-dark-900/50 transition-all duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="text-[10px] tracking-[0.3em] uppercase text-gold-400">Digital Design</span>
+                        <h3 class="font-display font-bold text-2xl mt-2">EcoVista</h3>
+                        <p
+                            class="text-sm text-cream-100/50 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                            Sustainable lifestyle app UI/UX & branding</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="work-card group reveal-section relative aspect-[4/3] bg-dark-700 rounded-sm overflow-hidden cursor-pointer md:mt-16"
+                    data-category="social">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=600&fit=crop"
+                        alt="Pulse Festival"
+                        class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700" />
+                    <div class="absolute inset-0 bg-gradient-to-br from-rose-900/30 via-pink-800/20 to-dark-900"></div>
+                    <div class="absolute inset-0 flex items-center justify-center"><span
+                            class="font-display text-7xl font-bold text-white/5 group-hover:text-white/10 transition-all duration-700 group-hover:scale-110">04</span>
+                    </div>
+                    <div class="absolute inset-0 bg-dark-900/0 group-hover:bg-dark-900/50 transition-all duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="text-[10px] tracking-[0.3em] uppercase text-gold-400">Social Media</span>
+                        <h3 class="font-display font-bold text-2xl mt-2">Pulse Festival</h3>
+                        <p
+                            class="text-sm text-cream-100/50 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                            Music festival social media campaign design</p>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="work-card group reveal-section relative aspect-[4/3] bg-dark-700 rounded-sm overflow-hidden cursor-pointer"
+                    data-category="editorial">
+                    <img src="https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?w=800&h=600&fit=crop"
+                        alt="Horizon Magazine"
+                        class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-700" />
+                    <div class="absolute inset-0 bg-gradient-to-br from-sky-900/30 via-blue-800/20 to-dark-900"></div>
+                    <div class="absolute inset-0 flex items-center justify-center"><span
+                            class="font-display text-7xl font-bold text-white/5 group-hover:text-white/10 transition-all duration-700 group-hover:scale-110">05</span>
+                    </div>
+                    <div class="absolute inset-0 bg-dark-900/0 group-hover:bg-dark-900/50 transition-all duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="text-[10px] tracking-[0.3em] uppercase text-gold-400">Editorial</span>
+                        <h3 class="font-display font-bold text-2xl mt-2">Horizon Magazine</h3>
+                        <p
+                            class="text-sm text-cream-100/50 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                            Travel magazine editorial layout & typography</p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="work-card group reveal-section relative aspect-[4/3] bg-dark-700 rounded-sm overflow-hidden cursor-pointer md:mt-16"
+                    data-category="packaging">
+                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&h=600&fit=crop"
+                        alt="Caspian Coffee"
+                        class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-700" />
+                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-800/30 via-amber-900/20 to-dark-900">
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center"><span
+                            class="font-display text-7xl font-bold text-white/5 group-hover:text-white/10 transition-all duration-700 group-hover:scale-110">06</span>
+                    </div>
+                    <div class="absolute inset-0 bg-dark-900/0 group-hover:bg-dark-900/50 transition-all duration-500">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="text-[10px] tracking-[0.3em] uppercase text-gold-400">Packaging</span>
+                        <h3 class="font-display font-bold text-2xl mt-2">Caspian Coffee</h3>
+                        <p
+                            class="text-sm text-cream-100/50 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                            Artisan coffee packaging & brand system</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="py-16 overflow-hidden border-y border-cream-100/5">
+        <div class="marquee-track flex whitespace-nowrap">
+            <span
+                class="marquee-content font-display text-6xl md:text-8xl font-bold text-cream-100/[0.03] uppercase tracking-wider mx-8">Branding
+                ✦ Print ✦ Digital ✦ Editorial ✦ Packaging ✦ Motion ✦ UI/UX ✦ </span>
+            <span
+                class="marquee-content font-display text-6xl md:text-8xl font-bold text-cream-100/[0.03] uppercase tracking-wider mx-8">Branding
+                ✦ Print ✦ Digital ✦ Editorial ✦ Packaging ✦ Motion ✦ UI/UX ✦ </span>
+        </div>
+    </div>
+
+    <!-- Skills / Tools Section -->
+    <section id="skills" class="py-32 lg:py-40 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 reveal-section">
+                <span class="text-xs tracking-[0.3em] uppercase text-gold-400/60">Tools & Skills</span>
+                <h2 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight mt-4">My<br />Toolkit
+                </h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 reveal-section">
+                <div
+                    class="skill-item group flex flex-col items-center gap-4 p-8 border border-cream-100/5 rounded-sm hover:border-gold-400/20 transition-all duration-500 hover:bg-dark-800/30">
+                    <svg class="w-10 h-10 text-cream-100/30 group-hover:text-gold-400 transition-colors duration-300"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M9.85 8.85c-.33.17-.66.35-.98.54-.18.11-.36.22-.55.32V8.65c.36-.17.72-.36 1.07-.56.18-.1.35-.21.53-.32l.04.02c-.04.35-.08.71-.11 1.06zm5.27-2.97c-.27-.04-.55-.07-.83-.1V4.93c.28.03.56.06.83.1v.85zM19 12l-7-7-7 7 7 7 7-7zm-7-8.65L2 12l10 8.65L22 12 12 3.35z" />
+                    </svg>
+                    <span
+                        class="text-xs tracking-[0.15em] uppercase text-cream-100/40 group-hover:text-cream-100/70 transition-colors">Photoshop</span>
+                </div>
+                <div
+                    class="skill-item group flex flex-col items-center gap-4 p-8 border border-cream-100/5 rounded-sm hover:border-gold-400/20 transition-all duration-500 hover:bg-dark-800/30">
+                    <svg class="w-10 h-10 text-cream-100/30 group-hover:text-gold-400 transition-colors duration-300"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.82 8 12 12l-7.82-4L12 4.18z" />
+                    </svg>
+                    <span
+                        class="text-xs tracking-[0.15em] uppercase text-cream-100/40 group-hover:text-cream-100/70 transition-colors">Illustrator</span>
+                </div>
+                <div
+                    class="skill-item group flex flex-col items-center gap-4 p-8 border border-cream-100/5 rounded-sm hover:border-gold-400/20 transition-all duration-500 hover:bg-dark-800/30">
+                    <svg class="w-10 h-10 text-cream-100/30 group-hover:text-gold-400 transition-colors duration-300"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm7 4a5 5 0 110 10A5 5 0 0112 7z" />
+                    </svg>
+                    <span
+                        class="text-xs tracking-[0.15em] uppercase text-cream-100/40 group-hover:text-cream-100/70 transition-colors">Figma</span>
+                </div>
+                <div
+                    class="skill-item group flex flex-col items-center gap-4 p-8 border border-cream-100/5 rounded-sm hover:border-gold-400/20 transition-all duration-500 hover:bg-dark-800/30">
+                    <svg class="w-10 h-10 text-cream-100/30 group-hover:text-gold-400 transition-colors duration-300"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M3 17v4h4l11.5-11.5-4-4L3 17zm17.71-10.21a1 1 0 000-1.42l-2.58-2.58a1 1 0 00-1.42 0L15.13 4.37l4 4 1.58-1.58z" />
+                    </svg>
+                    <span
+                        class="text-xs tracking-[0.15em] uppercase text-cream-100/40 group-hover:text-cream-100/70 transition-colors">InDesign</span>
+                </div>
+                <div
+                    class="skill-item group flex flex-col items-center gap-4 p-8 border border-cream-100/5 rounded-sm hover:border-gold-400/20 transition-all duration-500 hover:bg-dark-800/30">
+                    <svg class="w-10 h-10 text-cream-100/30 group-hover:text-gold-400 transition-colors duration-300"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                    </svg>
+                    <span
+                        class="text-xs tracking-[0.15em] uppercase text-cream-100/40 group-hover:text-cream-100/70 transition-colors">After
+                        Effects</span>
+                </div>
+                <div
+                    class="skill-item group flex flex-col items-center gap-4 p-8 border border-cream-100/5 rounded-sm hover:border-gold-400/20 transition-all duration-500 hover:bg-dark-800/30">
+                    <svg class="w-10 h-10 text-cream-100/30 group-hover:text-gold-400 transition-colors duration-300"
+                        viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h8v2H6zm10 0h2v2h-2zm-6-4h8v2h-8z" />
+                    </svg>
+                    <span
+                        class="text-xs tracking-[0.15em] uppercase text-cream-100/40 group-hover:text-cream-100/70 transition-colors">Lightroom</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 lg:py-40 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 reveal-section">
+                <span class="text-xs tracking-[0.3em] uppercase text-gold-400/60">03 — Services</span>
+                <h2 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight mt-4">What I<br />Do
+                    Best</h2>
+            </div>
+            <div class="space-y-0">
+                <div class="service-item reveal-section group border-t border-cream-100/10 py-10 px-2 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer hover:bg-dark-800/50 transition-all duration-500 -mx-2 md:px-6"
+                    data-service="brand">
+                    <div class="flex items-center gap-8">
+                        <span
+                            class="font-display text-sm text-gold-400/40 group-hover:text-gold-400 transition-colors">01</span>
+                        <h3
+                            class="font-display font-bold text-2xl md:text-3xl group-hover:text-gold-400 transition-colors duration-300">
+                            Brand Identity</h3>
+                    </div>
+                    <p class="text-sm text-cream-100/40 max-w-sm md:text-right">Logo design, visual identity systems,
+                        brand guidelines, and strategy that make brands unforgettable.</p>
+                </div>
+                <div class="service-item reveal-section group border-t border-cream-100/10 py-10 px-2 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer hover:bg-dark-800/50 transition-all duration-500 -mx-2 md:px-6"
+                    data-service="print">
+                    <div class="flex items-center gap-8">
+                        <span
+                            class="font-display text-sm text-gold-400/40 group-hover:text-gold-400 transition-colors">02</span>
+                        <h3
+                            class="font-display font-bold text-2xl md:text-3xl group-hover:text-gold-400 transition-colors duration-300">
+                            Print Design</h3>
+                    </div>
+                    <p class="text-sm text-cream-100/40 max-w-sm md:text-right">Posters, brochures, packaging, and
+                        editorial layouts crafted with precision and creativity.</p>
+                </div>
+                <div class="service-item reveal-section group border-t border-cream-100/10 py-10 px-2 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer hover:bg-dark-800/50 transition-all duration-500 -mx-2 md:px-6"
+                    data-service="digital">
+                    <div class="flex items-center gap-8">
+                        <span
+                            class="font-display text-sm text-gold-400/40 group-hover:text-gold-400 transition-colors">03</span>
+                        <h3
+                            class="font-display font-bold text-2xl md:text-3xl group-hover:text-gold-400 transition-colors duration-300">
+                            Digital Design</h3>
+                    </div>
+                    <p class="text-sm text-cream-100/40 max-w-sm md:text-right">Web design, UI/UX, social media content,
+                        and digital campaigns that captivate audiences.</p>
+                </div>
+                <div class="service-item reveal-section group border-t border-b border-cream-100/10 py-10 px-2 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer hover:bg-dark-800/50 transition-all duration-500 -mx-2 md:px-6"
+                    data-service="motion">
+                    <div class="flex items-center gap-8">
+                        <span
+                            class="font-display text-sm text-gold-400/40 group-hover:text-gold-400 transition-colors">04</span>
+                        <h3
+                            class="font-display font-bold text-2xl md:text-3xl group-hover:text-gold-400 transition-colors duration-300">
+                            Motion Graphics</h3>
+                    </div>
+                    <p class="text-sm text-cream-100/40 max-w-sm md:text-right">Animated logos, video intros, and motion
+                        design that bring stories to life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="py-32 lg:py-40 px-6 lg:px-12">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-16 reveal-section">
+                <span class="text-xs tracking-[0.3em] uppercase text-gold-400/60">04 — Experience</span>
+                <h2 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight mt-4">
+                    Career<br />Timeline</h2>
+            </div>
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-cream-100/10 md:-translate-x-1/2">
+                </div>
+
+                <!-- Timeline Item 1 -->
+                <div
+                    class="timeline-item reveal-section relative flex flex-col md:flex-row items-start md:items-center gap-6 mb-16 pl-12 md:pl-0">
+                    <div
+                        class="absolute left-2.5 md:left-1/2 w-3 h-3 rounded-full bg-gold-400 border-2 border-dark-900 md:-translate-x-1/2 z-10">
+                    </div>
+                    <div class="md:w-1/2 md:pr-12 md:text-right">
+                        <span class="text-[10px] tracking-[0.3em] uppercase text-gold-400/60">2023 — Present</span>
+                        <h3 class="font-display font-bold text-xl mt-2">Senior Graphic Designer</h3>
+                        <p class="text-sm text-cream-100/40 mt-1">Creative Studio Baku</p>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <p class="text-sm text-cream-100/50 leading-relaxed">Lead designer for major brand identity
+                            projects. Directing visual strategy for luxury and corporate clients across Azerbaijan and
+                            Turkey.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div
+                    class="timeline-item reveal-section relative flex flex-col md:flex-row items-start md:items-center gap-6 mb-16 pl-12 md:pl-0">
+                    <div
+                        class="absolute left-2.5 md:left-1/2 w-3 h-3 rounded-full bg-gold-400/50 border-2 border-dark-900 md:-translate-x-1/2 z-10">
+                    </div>
+                    <div class="md:w-1/2 md:pr-12 md:text-right">
+                        <span class="text-[10px] tracking-[0.3em] uppercase text-gold-400/60">2021 — 2023</span>
+                        <h3 class="font-display font-bold text-xl mt-2">Graphic Designer</h3>
+                        <p class="text-sm text-cream-100/40 mt-1">Freelance</p>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <p class="text-sm text-cream-100/50 leading-relaxed">Built a diverse portfolio working with
+                            startups and established brands. Specialized in branding, packaging, and editorial design.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div
+                    class="timeline-item reveal-section relative flex flex-col md:flex-row items-start md:items-center gap-6 pl-12 md:pl-0">
+                    <div
+                        class="absolute left-2.5 md:left-1/2 w-3 h-3 rounded-full bg-gold-400/30 border-2 border-dark-900 md:-translate-x-1/2 z-10">
+                    </div>
+                    <div class="md:w-1/2 md:pr-12 md:text-right">
+                        <span class="text-[10px] tracking-[0.3em] uppercase text-gold-400/60">2019 — 2021</span>
+                        <h3 class="font-display font-bold text-xl mt-2">Junior Designer</h3>
+                        <p class="text-sm text-cream-100/40 mt-1">Digital Agency</p>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <p class="text-sm text-cream-100/50 leading-relaxed">Started professional journey creating
+                            social media campaigns, web interfaces, and print materials for local businesses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-32 lg:py-40 px-6 lg:px-12 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-gold-400/10 rounded-full blur-[150px]"></div>
+        </div>
+        <div class="max-w-7xl mx-auto relative">
+            <div class="mb-16 reveal-section">
+                <span class="text-xs tracking-[0.3em] uppercase text-gold-400/60">04 — Testimonials</span>
+                <h2 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight mt-4">
+                    Client<br />Feedback</h2>
+            </div>
+            <div class="testimonial-slider reveal-section relative">
+                <div class="testimonial-track overflow-hidden">
+                    <div class="testimonial-slides flex transition-transform duration-700 ease-out">
+                        <!-- Slide 1 -->
+                        <div class="testimonial-slide flex-shrink-0 w-full px-4">
+                            <div class="max-w-3xl mx-auto text-center">
+                                <svg class="w-10 h-10 text-gold-400/20 mx-auto mb-8" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
+                                </svg>
+                                <p
+                                    class="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed text-cream-100/70 mb-10">
+                                    "Reshad's design sense is extraordinary. He transformed our brand from ordinary to
+                                    iconic. Every detail was meticulously crafted."</p>
+                                <div>
+                                    <p class="font-display font-bold text-lg">Kamil Huseynov</p>
+                                    <p class="text-sm text-gold-400/60 mt-1">CEO, Noir Parfums</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="testimonial-slide flex-shrink-0 w-full px-4">
+                            <div class="max-w-3xl mx-auto text-center">
+                                <svg class="w-10 h-10 text-gold-400/20 mx-auto mb-8" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
+                                </svg>
+                                <p
+                                    class="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed text-cream-100/70 mb-10">
+                                    "Working with Reshad was a game-changer. His designs don't just look beautiful —
+                                    they tell a story and connect with our audience on an emotional level."</p>
+                                <div>
+                                    <p class="font-display font-bold text-lg">Aysel Mammadova</p>
+                                    <p class="text-sm text-gold-400/60 mt-1">Creative Director, Baku Modern Art</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="testimonial-slide flex-shrink-0 w-full px-4">
+                            <div class="max-w-3xl mx-auto text-center">
+                                <svg class="w-10 h-10 text-gold-400/20 mx-auto mb-8" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
+                                </svg>
+                                <p
+                                    class="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed text-cream-100/70 mb-10">
+                                    "The social media campaign Reshad designed for Pulse Festival exceeded all
+                                    expectations. Engagement metrics tripled compared to last year."</p>
+                                <div>
+                                    <p class="font-display font-bold text-lg">Tural Aliyev</p>
+                                    <p class="text-sm text-gold-400/60 mt-1">Founder, Pulse Events</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Navigation Dots -->
+                <div class="flex items-center justify-center gap-3 mt-12">
+                    <button class="testimonial-dot w-2 h-2 rounded-full bg-gold-400 transition-all duration-300"
+                        data-slide="0"></button>
+                    <button
+                        class="testimonial-dot w-2 h-2 rounded-full bg-cream-100/20 hover:bg-cream-100/40 transition-all duration-300"
+                        data-slide="1"></button>
+                    <button
+                        class="testimonial-dot w-2 h-2 rounded-full bg-cream-100/20 hover:bg-cream-100/40 transition-all duration-300"
+                        data-slide="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog / Articles Teaser -->
+    <section id="blog" class="py-32 lg:py-40 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-end justify-between mb-16 reveal-section">
+                <div>
+                    <span class="text-xs tracking-[0.3em] uppercase text-gold-400/60">05 — Insights</span>
+                    <h2 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight mt-4">
+                        Latest<br />Articles</h2>
+                </div>
+                <div class="hidden md:block w-16 h-[2px] bg-gold-400/30"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="blog-card reveal-section group cursor-pointer" data-blog="branding">
+                    <div class="aspect-[16/10] bg-dark-700 rounded-sm overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=400&fit=crop"
+                            alt="Brand Identity"
+                            class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
+                    </div>
+                    <span class="text-[10px] tracking-[0.2em] uppercase text-gold-400/60">Branding</span>
+                    <h3
+                        class="font-display font-bold text-xl mt-2 mb-3 group-hover:text-gold-400 transition-colors duration-300">
+                        The Art of Building a Timeless Brand Identity</h3>
+                    <p class="text-sm text-cream-100/40 leading-relaxed">Exploring the principles behind brand
+                        identities that stand the test of time and resonate across cultures.</p>
+                    <span
+                        class="inline-flex items-center gap-2 text-xs text-gold-400/40 mt-4 group-hover:text-gold-400 transition-colors">Read
+                        More <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></span>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card reveal-section group cursor-pointer" data-blog="design-theory">
+                    <div class="aspect-[16/10] bg-dark-700 rounded-sm overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop"
+                            alt="Color Theory"
+                            class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
+                    </div>
+                    <span class="text-[10px] tracking-[0.2em] uppercase text-gold-400/60">Design Theory</span>
+                    <h3
+                        class="font-display font-bold text-xl mt-2 mb-3 group-hover:text-gold-400 transition-colors duration-300">
+                        Color Psychology in Modern Design</h3>
+                    <p class="text-sm text-cream-100/40 leading-relaxed">How strategic color choices influence
+                        perception, emotion, and ultimately drive user engagement.</p>
+                    <span
+                        class="inline-flex items-center gap-2 text-xs text-gold-400/40 mt-4 group-hover:text-gold-400 transition-colors">Read
+                        More <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></span>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card reveal-section group cursor-pointer" data-blog="typography">
+                    <div class="aspect-[16/10] bg-dark-700 rounded-sm overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?w=600&h=400&fit=crop"
+                            alt="Typography"
+                            class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
+                    </div>
+                    <span class="text-[10px] tracking-[0.2em] uppercase text-gold-400/60">Typography</span>
+                    <h3
+                        class="font-display font-bold text-xl mt-2 mb-3 group-hover:text-gold-400 transition-colors duration-300">
+                        Typography Rules Every Designer Should Break</h3>
+                    <p class="text-sm text-cream-100/40 leading-relaxed">When breaking conventional typography rules
+                        leads to more impactful and memorable design outcomes.</p>
+                    <span
+                        class="inline-flex items-center gap-2 text-xs text-gold-400/40 mt-4 group-hover:text-gold-400 transition-colors">Read
+                        More <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 lg:py-40 px-6 lg:px-12 relative">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-gold-400/10 rounded-full blur-[150px]"></div>
+        </div>
+        <div class="max-w-7xl mx-auto relative">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+                <div class="reveal-section">
+                    <span class="text-xs tracking-[0.3em] uppercase text-gold-400/60">04 — Contact</span>
+                    <h2 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight mt-4 mb-8">Let's
+                        Create<br /><span class="text-gold-400">Together</span></h2>
+                    <p class="text-cream-100/50 text-lg font-light mb-12 max-w-md">Have a project in mind? I'd love to
+                        hear about it. Let's collaborate and create something extraordinary.</p>
+                    <div class="space-y-6">
+                        <a href="mailto:hello@reshadaslanov.com"
+                            class="flex items-center gap-4 text-cream-100/60 hover:text-gold-400 transition-colors group">
+                            <div
+                                class="w-12 h-12 rounded-full border border-cream-100/10 flex items-center justify-center group-hover:border-gold-400/30 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                                </svg>
+                            </div>
+                            <span class="text-sm tracking-wide">hello@reshadaslanov.com</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-4 text-cream-100/60 hover:text-gold-400 transition-colors group">
+                            <div
+                                class="w-12 h-12 rounded-full border border-cream-100/10 flex items-center justify-center group-hover:border-gold-400/30 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24">
+                                    <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path
+                                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                                </svg>
+                            </div>
+                            <span class="text-sm tracking-wide">Baku, Azerbaijan</span>
+                        </a>
+                    </div>
+                    <div class="flex gap-4 mt-12">
+                        <a href="#"
+                            class="w-11 h-11 rounded-full border border-cream-100/10 flex items-center justify-center text-cream-100/40 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300"
+                            aria-label="Instagram">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-11 h-11 rounded-full border border-cream-100/10 flex items-center justify-center text-cream-100/40 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300"
+                            aria-label="Behance">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-11 h-11 rounded-full border border-cream-100/10 flex items-center justify-center text-cream-100/40 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300"
+                            aria-label="Dribbble">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0C5.375 0 0 5.375 0 12s5.375 12 12 12 12-5.375 12-12S18.625 0 12 0zm7.568 5.855c1.33 1.63 2.156 3.676 2.207 5.912-2.76-.574-5.257-.574-7.489-.234a23.1 23.1 0 00-.855-1.86c2.69-1.116 4.777-2.56 6.137-3.818zM12 2.25c2.469 0 4.734.883 6.502 2.344-1.225 1.142-3.16 2.479-5.685 3.505A43.693 43.693 0 009.39 2.73 9.834 9.834 0 0112 2.25zM7.064 3.47a41.385 41.385 0 013.468 5.297c-3.505.926-7.254 1.027-9.07 1.027A9.818 9.818 0 017.064 3.47zM2.25 12v-.36c.222.006 6.036.07 9.985-1.08.279.534.55 1.075.807 1.62-4.766 1.37-7.66 5.342-8.67 7.036A9.713 9.713 0 012.25 12zm3.692 8.085c.625-1.122 3.227-5.2 8.36-6.84.013-.005.025-.008.038-.013a38.64 38.64 0 012.218 7.863A9.752 9.752 0 0112 21.75a9.716 9.716 0 01-6.058-1.665zm8.577.898a40.316 40.316 0 00-2.09-7.467c2.03-.315 4.296-.24 6.836.296a9.791 9.791 0 01-4.746 7.17z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-11 h-11 rounded-full border border-cream-100/10 flex items-center justify-center text-cream-100/40 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300"
+                            aria-label="LinkedIn">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reveal-section">
+                    <form id="contact-form" action="https://formspree.io/f/xpwdjqkl" method="POST" class="space-y-6">
+                        <div>
+                            <input type="text" name="name" required placeholder="Your Name"
+                                class="w-full bg-transparent border-b border-cream-100/10 py-4 text-cream-100 placeholder-cream-100/30 focus:outline-none focus:border-gold-400/50 transition-colors text-sm tracking-wide" />
+                        </div>
+                        <div>
+                            <input type="email" name="email" required placeholder="Your Email"
+                                class="w-full bg-transparent border-b border-cream-100/10 py-4 text-cream-100 placeholder-cream-100/30 focus:outline-none focus:border-gold-400/50 transition-colors text-sm tracking-wide" />
+                        </div>
+                        <div>
+                            <textarea name="message" required placeholder="Tell me about your project..." rows="4"
+                                class="w-full bg-transparent border-b border-cream-100/10 py-4 text-cream-100 placeholder-cream-100/30 focus:outline-none focus:border-gold-400/50 transition-colors text-sm tracking-wide resize-none"></textarea>
+                        </div>
+                        <input type="hidden" name="_subject" value="New Portfolio Contact from Website" />
+                        <button type="submit"
+                            class="inline-flex items-center gap-3 border border-gold-400/30 px-8 py-4 text-sm tracking-[0.2em] uppercase text-gold-400 hover:bg-gold-400 hover:text-dark-900 transition-all duration-500 mt-4">
+                            Send Message
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 lg:px-12 border-t border-cream-100/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-cream-100/30 tracking-wide">&copy; 2026 Reshad Aslanov. All rights reserved.</p>
+            <p class="text-xs text-cream-100/20 tracking-wide">Designed & developed with ♥ in Baku</p>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top -->
+    <!-- Back to Top (Floating Action Button) -->
+    <a href="#" id="back-to-top"
+        class="fixed bottom-8 right-8 z-[999] p-3 rounded-full bg-gold-400 text-dark-900 shadow-lg transform transition-all duration-300 opacity-0 invisible translate-y-4 hover:-translate-y-1 hover:shadow-gold-400/50"
+        aria-label="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </a>
+
+    <!-- Project Modal -->
+    <div id="project-modal"
+        class="fixed inset-0 z-[80] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500">
+        <div class="absolute inset-0 bg-dark-900/95 backdrop-blur-xl" id="modal-backdrop"></div>
+        <div
+            class="relative max-w-5xl w-full mx-6 max-h-[90vh] overflow-y-auto modal-content scale-95 transition-transform duration-500">
+            <button id="modal-close"
+                class="absolute top-6 right-6 z-10 w-12 h-12 rounded-full border border-cream-100/10 flex items-center justify-center text-cream-100/60 hover:text-gold-400 hover:border-gold-400/30 transition-all duration-300 bg-dark-900/50 backdrop-blur-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="rounded-sm overflow-hidden">
+                <div id="modal-image" class="w-full aspect-video bg-dark-700 overflow-hidden">
+                    <img id="modal-img" src="" alt="" class="w-full h-full object-cover" />
+                </div>
+                <div class="bg-dark-800 p-8 lg:p-12">
+                    <span id="modal-category" class="text-[10px] tracking-[0.3em] uppercase text-gold-400"></span>
+                    <h3 id="modal-title" class="font-display font-bold text-3xl lg:text-4xl mt-3 mb-4"></h3>
+                    <p id="modal-desc" class="text-cream-100/50 text-base lg:text-lg font-light leading-relaxed mb-8">
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-cream-100/10">
+                        <div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-cream-100/30 mb-1">Client</p>
+                            <p id="modal-client" class="text-sm text-cream-100/70"></p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-cream-100/30 mb-1">Year</p>
+                            <p id="modal-year" class="text-sm text-cream-100/70"></p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-cream-100/30 mb-1">Category</p>
+                            <p id="modal-type" class="text-sm text-cream-100/70"></p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] tracking-[0.2em] uppercase text-cream-100/30 mb-1">Tools</p>
+                            <p id="modal-tools" class="text-sm text-cream-100/70"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Consent -->
+    <div id="cookie-consent"
+        class="fixed bottom-0 left-0 right-0 z-[90] p-4 lg:p-6 bg-dark-800/95 backdrop-blur-xl border-t border-cream-100/5 transform translate-y-full transition-transform duration-700">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-cream-100/50">This site uses cookies to enhance your experience. <a href="#"
+                    class="text-gold-400/60 hover:text-gold-400 underline underline-offset-2">Learn more</a></p>
+            <div class="flex gap-3">
+                <button id="cookie-decline"
+                    class="text-[10px] tracking-[0.2em] uppercase px-5 py-2.5 border border-cream-100/10 text-cream-100/40 hover:text-cream-100 transition-all duration-300">Decline</button>
+                <button id="cookie-accept"
+                    class="text-[10px] tracking-[0.2em] uppercase px-5 py-2.5 border border-gold-400/30 text-gold-400 bg-gold-400/10 hover:bg-gold-400 hover:text-dark-900 transition-all duration-300">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

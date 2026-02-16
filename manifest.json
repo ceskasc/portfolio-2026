@@ -1,0 +1,22 @@
+{
+  "name": "Reshad Aslanov — Portfolio",
+  "short_name": "R.A Portfolio",
+  "description": "Graphic Designer based in Baku, Azerbaijan. Crafting visual identities that resonate.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#d4a853",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://fav.farm/✦",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://fav.farm/✦",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
