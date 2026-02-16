@@ -1,14 +1,15 @@
 <div align="center">
  
   <!-- PROJECT SHIELDS -->
+  <!-- PROJECT SHIELDS -->
   <a href="https://github.com/ceskasc">
-    <img src="https://img.shields.io/badge/Sadık_Can_Çeşka-Portfolio-d4a853?style=for-the-badge&logo=github&logoColor=0a0a0a&labelColor=d4a853" alt="Name Badge" />
+    <img src="https://img.shields.io/badge/Portfolio-Sadık_Can_Çeşka-d4a853?style=for-the-badge&logo=github&logoColor=0a0a0a&labelColor=d4a853" alt="Portfolio" />
   </a>
   <a href="https://discord.gg/zq8mQTeBqA">
-    <img src="https://img.shields.io/discord/1234567890?color=0a0a0a&label=Join%20Community&logo=discord&logoColor=d4a853&style=for-the-badge" alt="Discord Badge" />
+    <img src="https://img.shields.io/badge/Discord-Join_Community-0a0a0a?style=for-the-badge&logo=discord&logoColor=d4a853&labelColor=0a0a0a&color=d4a853" alt="Discord" />
   </a>
   <a href="mailto:contact@sadikcanceska.com">
-    <img src="https://img.shields.io/badge/Email-Contact_Me-d4a853?style=for-the-badge&logo=gmail&logoColor=0a0a0a&labelColor=d4a853" alt="Email Badge" />
+    <img src="https://img.shields.io/badge/Email-Contact_Me-d4a853?style=for-the-badge&logo=gmail&logoColor=0a0a0a&labelColor=d4a853" alt="Email" />
   </a>
 
   <br />
