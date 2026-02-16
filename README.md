@@ -198,20 +198,7 @@
 
 <br />
 
-<div align="center"> 
-  <a href="https://linkedin.com/in/sadikcanceska" target="_blank">
-    <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
-  </a> 
-  <a href="https://instagram.com/ceskasc" target="_blank">
-    <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white" alt="Instagram">
-  </a>
-  <a href="https://twitter.com/ceskasc" target="_blank">
-    <img src="https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white" alt="Twitter">
-  </a>
-  <a href="https://medium.com/@ceskasc" target="_blank">
-    <img src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white" alt="Medium">
-  </a>
-</div>
+
 
 <br />
 <br />
