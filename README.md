@@ -23,7 +23,7 @@
 
   <p>
     <img
-      src="./assets/Screenshot%202026-02-17%20041542.png"
+      src="./assets/hero-preview-2026.png"
       alt="Portfolio Hero Preview"
       width="900"
     />
@@ -276,7 +276,7 @@ portfolio-2026-main/
 |- sitemap.xml
 |- 404.html
 |- assets/
-|  |- Screenshot 2026-02-17 041542.png
+|  |- hero-preview-2026.png
 |- README.md
 ```
 
